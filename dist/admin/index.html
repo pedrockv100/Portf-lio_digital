@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#031f39" />
+    <title>Painel de Projetos · CEUNSP</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <header class="admin-header">
+      <a href="../index.html" class="admin-brand" aria-label="Voltar ao portfólio público">
+        <img src="../assets/images/ceunsp-logo.png" alt="CEUNSP" />
+        <span><strong>Painel de projetos</strong><small>Portfólio Digital</small></span>
+      </a>
+      <div class="header-actions">
+        <a href="../index.html" class="button button-ghost">Ver site público</a>
+        <button id="sign-out" class="button button-ghost" type="button" hidden>Sair</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="auth-view" id="auth-view" hidden>
+        <div class="auth-card">
+          <p class="eyebrow">Acesso administrativo</p>
+          <h1>Entre para gerenciar os projetos</h1>
+          <p>Use uma conta do Supabase Auth com a função <code>admin</code> configurada em <code>app_metadata</code>.</p>
+          <form id="login-form">
+            <label>E-mail<input name="email" type="email" autocomplete="username" required /></label>
+            <label>Senha<input name="password" type="password" autocomplete="current-password" required /></label>
+            <button class="button button-primary" type="submit">Entrar</button>
+          </form>
+          <p class="form-message" id="login-message" role="status"></p>
+        </div>
+      </section>
+
+      <section class="auth-view" id="access-denied" hidden>
+        <div class="auth-card">
+          <p class="eyebrow">Acesso restrito</p>
+          <h1>Esta conta não é administradora</h1>
+          <p>Peça ao responsável pelo Supabase para adicionar <code>{ "role": "admin" }</code> ao <code>app_metadata</code> desta conta.</p>
+          <button class="button button-primary" id="denied-sign-out" type="button">Sair desta conta</button>
+        </div>
+      </section>
+
+      <section class="admin-shell" id="admin-shell" hidden>
+        <div class="mode-banner" id="mode-banner">
+          <strong>Modo demonstração.</strong> As alterações ficam somente neste navegador até o Supabase ser configurado.
+        </div>
+
+        <div class="admin-intro">
+          <div>
+            <p class="eyebrow">Gestão do acervo</p>
+            <h1>Projetos acadêmicos</h1>
+            <p>Cadastre, edite e organize os trabalhos exibidos no portfólio público.</p>
+          </div>
+          <button class="button button-primary" id="new-project" type="button">Novo projeto</button>
+        </div>
+
+        <div class="admin-layout">
+          <aside class="form-panel" id="form-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Cadastro</p>
+                <h2 id="form-title">Novo projeto</h2>
+              </div>
+              <button class="icon-button" id="cancel-edit" type="button" aria-label="Cancelar edição" hidden>×</button>
+            </div>
+
+            <form id="project-form">
+              <label>Nome do projeto<input name="title" required maxlength="120" /></label>
+              <label>Descrição curta<textarea name="short_description" required maxlength="240" rows="3"></textarea></label>
+              <label>Descrição completa<textarea name="description" required rows="6"></textarea></label>
+              <div class="field-grid">
+                <label>Curso<input name="course" list="course-options" required /></label>
+                <label>Disciplina<input name="subject" required /></label>
+              </div>
+              <label>Turma<input name="class_name" /></label>
+              <label>Integrantes <span>separados por vírgula</span><input name="students" required /></label>
+              <label>Tecnologias <span>separadas por vírgula</span><input name="technologies" required /></label>
+              <div class="field-grid">
+                <label>Imagem de capa<input name="cover_image" type="file" accept="image/png,image/jpeg,image/webp" /></label>
+                <label>Imagens adicionais<input name="additional_images" type="file" accept="image/png,image/jpeg,image/webp" multiple /></label>
+              </div>
+              <div class="field-grid">
+                <label>Link do projeto<input name="project_url" type="url" placeholder="https://" /></label>
+                <label>Link do GitHub<input name="github_url" type="url" placeholder="https://github.com/" /></label>
+              </div>
+              <p class="upload-hint" id="upload-hint">No modo demonstração, os arquivos selecionados não são enviados nem salvos.</p>
+              <button class="button button-primary submit-button" type="submit">Publicar projeto</button>
+            </form>
+            <datalist id="course-options"></datalist>
+          </aside>
+
+          <section class="list-panel" aria-labelledby="list-title">
+            <div class="list-heading">
+              <div>
+                <p class="eyebrow">Publicados</p>
+                <h2 id="list-title">Projetos cadastrados</h2>
+              </div>
+              <span id="project-total">0 projetos</span>
+            </div>
+            <div class="admin-projects" id="admin-projects"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="confirm-dialog" id="confirm-dialog">
+      <h2>Excluir projeto?</h2>
+      <p>Esta ação remove o projeto e suas imagens. Não será possível desfazer.</p>
+      <div>
+        <button class="button button-ghost" id="cancel-delete" type="button">Cancelar</button>
+        <button class="button button-danger" id="confirm-delete" type="button">Excluir projeto</button>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/courses.js"></script>
+    <script src="../js/projects.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
