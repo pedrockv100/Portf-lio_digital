@@ -68,23 +68,30 @@
   }
 
   function localProjects() {
-    const bundled = window.CEUNSP_MOCK_PROJECTS;
+    const bundled = Array.isArray(window.CEUNSP_MOCK_PROJECTS)
+      ? window.CEUNSP_MOCK_PROJECTS
+      : [];
+    const dataVersion = String(window.CEUNSP_PROJECTS_DATA_VERSION || "1");
+
     try {
       const saved = JSON.parse(localStorage.getItem("ceunsp_mock_projects") || "null");
-      const reward = Array.isArray(saved) ? saved.find((project) => project.id === "reward-library") : null;
-      const outdated = !Array.isArray(saved)
-        || saved.some((project) => project.id === "mock-02")
-        || !reward
-        || reward.is_mock !== false
-        || !String(reward.cover_image || "").includes("reward-library-logo");
+      const savedVersion = localStorage.getItem("ceunsp_mock_projects_version");
 
-      if (outdated) {
-        localStorage.setItem("ceunsp_mock_projects", JSON.stringify(bundled));
-        return bundled;
+      if (!Array.isArray(saved) || savedVersion !== dataVersion) {
+        const bundledIds = new Set(bundled.map((project) => String(project.id)));
+        const customProjects = Array.isArray(saved)
+          ? saved.filter((project) => !bundledIds.has(String(project.id)))
+          : [];
+        const merged = [...bundled, ...customProjects];
+        localStorage.setItem("ceunsp_mock_projects", JSON.stringify(merged));
+        localStorage.setItem("ceunsp_mock_projects_version", dataVersion);
+        return merged;
       }
+
       return saved;
     } catch {
       localStorage.setItem("ceunsp_mock_projects", JSON.stringify(bundled));
+      localStorage.setItem("ceunsp_mock_projects_version", dataVersion);
       return bundled;
     }
   }
@@ -226,17 +233,15 @@
       .map((item) => `<span>${escapeHtml(item)}</span>`)
       .join("");
     const projectUrl = safeUrl(project.project_url);
-    const githubUrl = safeUrl(project.github_url);
     const coverUrl = safeAssetUrl(project.cover_image);
     const features = arrayValue(project.features);
     const images = arrayValue(project.project_images)
       .map((item) => typeof item === "string" ? item : item?.image_url)
       .map(safeAssetUrl)
       .filter(Boolean);
-    const links = [
-      projectUrl ? `<a class="button button-primary" href="${escapeHtml(projectUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(project.link_label || "Abrir projeto")}</a>` : "",
-      githubUrl ? `<a class="button button-ghost" href="${escapeHtml(githubUrl)}" target="_blank" rel="noopener noreferrer">Ver GitHub</a>` : ""
-    ].join("");
+    const links = projectUrl
+      ? `<a class="button button-primary" href="${escapeHtml(projectUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(project.link_label || "Abrir projeto")}</a>`
+      : "";
     const gallery = images.length
       ? `<div class="detail-gallery">${images.map((url) => `<img src="${escapeHtml(url)}" alt="Imagem adicional do projeto ${escapeHtml(project.title)}" />`).join("")}</div>`
       : "";
@@ -259,11 +264,11 @@
         <div class="detail-main">
           <h3>Sobre o projeto</h3>
           <p>${escapeHtml(project.description || project.short_description)}</p>
+          ${links ? `<div class="detail-actions detail-actions-primary">${links}</div>` : ""}
           ${featuresMarkup}
           <h3>Tecnologias utilizadas</h3>
           <div class="technology-list">${technologies}</div>
           ${gallery}
-          ${links ? `<div class="detail-actions">${links}</div>` : ""}
         </div>
         <aside class="detail-side">
           <h3>Informações acadêmicas</h3>

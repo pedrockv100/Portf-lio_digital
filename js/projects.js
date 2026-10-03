@@ -2,7 +2,31 @@
  * A Reward Library é um projeto real documentado pelos arquivos enviados.
  * Os demais itens fictícios continuam disponíveis apenas para os outros cursos enquanto os projetos reais não chegam.
  */
+window.CEUNSP_PROJECTS_DATA_VERSION = "2026-10-03-02";
+
 window.CEUNSP_MOCK_PROJECTS = [
+{
+  id: "reward-library",
+  title: "Reward Library",
+  short_description: "Plataforma digital que aproxima pessoas, bibliotecas e livros, reunindo serviços de biblioteca e elementos de gamificação para incentivar a leitura.",
+  description: "Reward Library é uma aplicação web proposta para conectar usuários e bibliotecas, reunindo em uma única plataforma a consulta de livros, o acompanhamento de empréstimos, a divulgação de eventos e o gerenciamento de informações do acervo. A experiência também prevê pontos, ranking e possíveis recompensas como elementos de gamificação para ampliar a participação e incentivar o hábito de leitura.",
+  course: "Análise e Desenvolvimento de Sistemas",
+  course_acronym: "ADS",
+  course_label: "ADS",
+  subject: "Análise e Projeto de Sistemas II",
+  class_name: "",
+  students: ["Omar Rossel", "Rafael Lucas", "Gabriel Nicoletti", "Luan Araujo", "Eduardo Tibo", "Felipe Fernades"],
+  technologies: ["HTML", "CSS", "JavaScript", "Node.js", "MySQL", "Git + GitHub"],
+  features: ["Consulta de livros", "Empréstimos", "Gestão do acervo", "Eventos e atividades", "Sistema de pontos", "Ranking", "Gamificação para incentivar a leitura"],
+  card_technology_limit: 5,
+  cover_image: "assets/images/projects/reward-library/reward-library-logo.jpeg",
+  cover_fit: "contain",
+  project_images: [],
+  project_url: "https://qblack7.github.io/RewardsLibrary/",
+  link_label: "Acessar projeto",
+  accent: "#4b1fb8",
+  is_mock: false
+},
 {
   id: "musicsbox",
   title: "MusicsBox",
@@ -58,9 +82,8 @@ window.CEUNSP_MOCK_PROJECTS = [
   cover_image: "assets/images/projects/musicsbox/musicbox-logo.png",
   cover_fit: "contain",
   project_images: [],
-  project_url: "",
+  project_url: "https://musicsbox-web.onrender.com",
   link_label: "Acessar projeto",
-  github_url: "",
   accent: "#f31946",
   is_mock: false
 }

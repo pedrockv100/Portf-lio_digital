@@ -21,11 +21,31 @@
   };
 
   function localProjects() {
+    const bundled = Array.isArray(window.CEUNSP_MOCK_PROJECTS)
+      ? window.CEUNSP_MOCK_PROJECTS
+      : [];
+    const dataVersion = String(window.CEUNSP_PROJECTS_DATA_VERSION || "1");
+
     try {
       const saved = JSON.parse(localStorage.getItem("ceunsp_mock_projects") || "null");
-      return Array.isArray(saved) ? saved : [...window.CEUNSP_MOCK_PROJECTS];
+      const savedVersion = localStorage.getItem("ceunsp_mock_projects_version");
+
+      if (!Array.isArray(saved) || savedVersion !== dataVersion) {
+        const bundledIds = new Set(bundled.map((project) => String(project.id)));
+        const customProjects = Array.isArray(saved)
+          ? saved.filter((project) => !bundledIds.has(String(project.id)))
+          : [];
+        const merged = [...bundled, ...customProjects];
+        localStorage.setItem("ceunsp_mock_projects", JSON.stringify(merged));
+        localStorage.setItem("ceunsp_mock_projects_version", dataVersion);
+        return merged;
+      }
+
+      return saved;
     } catch {
-      return [...window.CEUNSP_MOCK_PROJECTS];
+      localStorage.setItem("ceunsp_mock_projects", JSON.stringify(bundled));
+      localStorage.setItem("ceunsp_mock_projects_version", dataVersion);
+      return bundled;
     }
   }
 
@@ -118,8 +138,7 @@
       class_name: String(formData.get("class_name") || "").trim(),
       students: splitValues(formData.get("students")),
       technologies: splitValues(formData.get("technologies")),
-      project_url: String(formData.get("project_url") || "").trim(),
-      github_url: String(formData.get("github_url") || "").trim()
+      project_url: String(formData.get("project_url") || "").trim()
     };
   }
 
@@ -181,8 +200,7 @@
       class_name: project.class_name,
       students: (project.students || []).join(", "),
       technologies: (project.technologies || []).join(", "),
-      project_url: project.project_url,
-      github_url: project.github_url
+      project_url: project.project_url
     };
     Object.entries(fields).forEach(([name, value]) => {
       const field = elements.form.elements.namedItem(name);

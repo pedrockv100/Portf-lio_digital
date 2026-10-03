@@ -16,7 +16,6 @@ create table if not exists public.projects (
   cover_image text,
   cover_storage_path text,
   project_url text,
-  github_url text,
   created_at timestamptz not null default now()
 );
 

@@ -1118,6 +1118,11 @@ a {
   margin-top: 28px;
 }
 
+.detail-actions-primary {
+  margin-top: -8px;
+  margin-bottom: 30px;
+}
+
 .detail-gallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
