@@ -2,7 +2,7 @@
  * A Reward Library é um projeto real documentado pelos arquivos enviados.
  * Os demais itens fictícios continuam disponíveis apenas para os outros cursos enquanto os projetos reais não chegam.
  */
-window.CEUNSP_PROJECTS_DATA_VERSION = "2026-10-03-02";
+window.CEUNSP_PROJECTS_DATA_VERSION = "2026-10-03-03";
 
 window.CEUNSP_MOCK_PROJECTS = [
 {
@@ -16,7 +16,7 @@ window.CEUNSP_MOCK_PROJECTS = [
   subject: "Análise e Projeto de Sistemas II",
   class_name: "",
   students: ["Omar Rossel", "Rafael Lucas", "Gabriel Nicoletti", "Luan Araujo", "Eduardo Tibo", "Felipe Fernades"],
-  technologies: ["HTML", "CSS", "JavaScript", "Node.js", "MySQL", "Git + GitHub"],
+  technologies: ["HTML", "CSS", "JavaScript", "Node.js", "MySQL"],
   features: ["Consulta de livros", "Empréstimos", "Gestão do acervo", "Eventos e atividades", "Sistema de pontos", "Ranking", "Gamificação para incentivar a leitura"],
   card_technology_limit: 5,
   cover_image: "assets/images/projects/reward-library/reward-library-logo.jpeg",
@@ -39,7 +39,7 @@ window.CEUNSP_MOCK_PROJECTS = [
   class_name: "",
   students: [
     "João Paulo Marcuz",
-    "Pedro Henrique Viera",
+    "Pedro Henrique Vieira",
     "Michelly Rodrigues"
   ],
   technologies: [

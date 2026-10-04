@@ -1,54 +1,24 @@
 # Portfólio Digital CEUNSP
 
-Projeto acadêmico responsivo feito com HTML5, CSS3 e JavaScript puro.
+Versão reorganizada com duas páginas principais:
 
-Esta versão foi organizada para evitar arquivos duplicados: o site usa diretamente os arquivos da raiz, sem uma segunda cópia em `dist/`.
+- `index.html`: página inicial com identidade do portfólio, cursos e projetos.
+- `eventos.html`: eventos, registros acadêmicos e apresentação da turma/equipe de desenvolvimento.
 
-## Estrutura
+## Equipe de desenvolvimento
 
-```text
-Portfólio_digital_LIMPO/
-├── index.html
-├── admin/
-│   ├── index.html
-│   ├── admin.css
-│   └── admin.js
-├── assets/
-│   ├── icons/
-│   └── images/
-├── css/
-│   ├── style.css
-│   └── responsive.css
-├── js/
-│   ├── app.js
-│   ├── config.js
-│   ├── courses.js
-│   ├── projects.js
-│   └── supabase.js
-├── supabase/
-│   └── schema.sql
-└── README.md
-```
+- Pedro Henrique Vieira
+- Michelly Rodrigues
+- João Paulo Marcuz
 
-## Abrir o site
+## Observação sobre a foto da turma
 
-A forma mais simples no VS Code é abrir esta pasta e usar a extensão **Live Server** no `index.html`.
+A área da foto da turma foi deixada preparada como placeholder. Quando a foto oficial do grupo estiver disponível, ela pode ser adicionada nessa seção sem alterar o restante do layout.
 
-Também é possível iniciar um servidor local pelo terminal, dentro da pasta do projeto:
+## Estrutura principal
 
-```powershell
-python -m http.server 5500
-```
-
-Depois acesse:
-
-- Site: `http://localhost:5500/`
-- Painel: `http://localhost:5500/admin/`
-
-## Supabase
-
-O projeto continua com os arquivos de integração e com `supabase/schema.sql` para não perder nenhuma funcionalidade existente. Se as credenciais em `js/config.js` estiverem vazias, o painel mantém o modo de demonstração/local já existente.
-
-## Importante
-
-Não existe mais a pasta `dist/` nem scripts que recriem uma cópia do projeto. Edite somente os arquivos destas pastas principais; assim não há risco de alterar uma cópia e abrir outra por engano.
+- `assets/images/eventos/`: fotos fornecidas para a página de eventos.
+- `css/`: estilos do site.
+- `js/`: dados e funcionalidades dos projetos.
+- `admin/`: painel administrativo já existente.
+- `supabase/`: estrutura já existente para integração com Supabase.

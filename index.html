@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfólio Digital CEUNSP — projetos acadêmicos desenvolvidos pelos alunos."
+      content="Portfólio Digital CEUNSP — projetos, cursos e registros acadêmicos da turma."
     />
     <meta name="theme-color" content="#063f72" />
     <title>Portfólio Digital CEUNSP</title>
@@ -23,8 +23,8 @@
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <header class="site-header" id="topo">
-      <nav class="navbar container" aria-label="Navegação principal">
-        <a class="brand" href="#inicio" aria-label="CEUNSP — início">
+      <nav class="navbar" aria-label="Navegação principal">
+        <a class="brand" href="index.html" aria-label="CEUNSP — página inicial">
           <img src="assets/images/ceunsp-logo.png" alt="CEUNSP" />
         </a>
 
@@ -39,9 +39,8 @@
         </button>
 
         <div class="nav-links" id="main-menu">
-          <a href="#inicio">Início</a>
-          <a href="#cursos">Cursos</a>
-          <a href="#projetos">Projetos</a>
+          <a class="active" href="index.html">Início</a>
+          <a href="eventos.html">Eventos &amp; Turma</a>
         </div>
       </nav>
     </header>
@@ -50,37 +49,24 @@
       <section class="hero" id="inicio" aria-labelledby="hero-title">
         <div class="hero-grid container">
           <div class="hero-copy reveal">
-            <p class="eyebrow">CEUNSP · Exposição acadêmica</p>
+            <p class="eyebrow">CEUNSP · Portfólio acadêmico</p>
             <h1 id="hero-title">Portfólio<br /><span>Digital</span></h1>
-            <p class="hero-subtitle">Projetos acadêmicos desenvolvidos pelos alunos</p>
-            <a class="button button-primary" href="#cursos">Conhecer os cursos</a>
+            <p class="hero-professor">Profª M.A. Waldinelly Martha Alves Costa</p>
+            <p class="hero-subtitle">Projetos, experiências e registros acadêmicos reunidos em um só espaço.</p>
+            <a class="button button-primary" href="#cursos">Explorar o portfólio</a>
           </div>
 
-          <aside class="institution-card reveal" aria-label="Informações acadêmicas">
-            <div class="institution-logo-wrap">
+          <aside class="portfolio-identity-card reveal" aria-label="Identidade do portfólio">
+            <div class="portfolio-identity-logo">
               <img src="assets/images/ceunsp-logo.png" alt="Logo do CEUNSP" />
             </div>
-            <dl class="academic-details">
-              <div>
-                <dt>Instituição</dt>
-                <dd>Centro Universitário Nossa Senhora do Patrocínio — CEUNSP</dd>
-              </div>
-              <div>
-                <dt>Curso</dt>
-                <dd>Análise e Desenvolvimento de Sistemas</dd>
-              </div>
-              <div>
-                <dt>Disciplina</dt>
-                <dd>
-                  Análise e Projeto de Sistemas II
-                  <small>M.A Waldinelly Martha Alves Costa</small>
-                </dd>
-              </div>
-              <div>
-                <dt>Coordenador</dt>
-                <dd>Dr. Gilmar Cardozo</dd>
-              </div>
-            </dl>
+            <p class="identity-kicker">Nossa identidade</p>
+            <h2>Uma vitrine para a produção acadêmica da turma.</h2>
+            <p>
+              Este portfólio reúne projetos, cursos participantes e momentos que fazem parte da trajetória acadêmica,
+              valorizando o trabalho desenvolvido pelos estudantes e professores.
+            </p>
+            <a class="identity-link" href="eventos.html">Conhecer nossos eventos e a turma →</a>
           </aside>
         </div>
         <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
@@ -94,8 +80,24 @@
               <p class="eyebrow eyebrow-dark">Formação que ganha forma</p>
               <h2 id="courses-title">Nossos Cursos</h2>
             </div>
-            <p>Explore as áreas participantes e conheça os trabalhos desenvolvidos pelos estudantes.</p>
+            <p>Conheça os cursos participantes e as informações acadêmicas relacionadas ao portfólio.</p>
           </div>
+
+          <div class="course-academic-strip reveal" aria-label="Informações acadêmicas">
+            <div>
+              <span>Instituição</span>
+              <strong>Centro Universitário Nossa Senhora do Patrocínio — CEUNSP</strong>
+            </div>
+            <div>
+              <span>Disciplina</span>
+              <strong>Análise e Projeto de Sistemas II</strong>
+            </div>
+            <div>
+              <span>Coordenador</span>
+              <strong>Dr. Gilmar Cardozo</strong>
+            </div>
+          </div>
+
           <div class="courses-grid" id="courses-grid" aria-live="polite"></div>
         </div>
       </section>
@@ -149,17 +151,16 @@
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-grid">
+      <div class="container footer-grid footer-grid-simple">
         <div>
           <img src="assets/images/ceunsp-logo.png" alt="CEUNSP" class="footer-logo" />
-          <p>Projetos desenvolvidos pelos alunos do CEUNSP.</p>
+          <p>Portfólio Digital — projetos e experiências acadêmicas.</p>
         </div>
-        <dl>
-          <div><dt>Portfólio</dt><dd>Digital</dd></div>
-          <div><dt>Curso</dt><dd>Análise e Desenvolvimento de Sistemas</dd></div>
-          <div><dt>Disciplina</dt><dd>Análise e Projeto de Sistemas II</dd></div>
-          <div><dt>Coordenador</dt><dd>A definir</dd></div>
-        </dl>
+        <div class="footer-identity">
+          <span>Professora responsável</span>
+          <strong>M.A. Waldinelly Martha Alves Costa</strong>
+          <a href="eventos.html">Eventos &amp; Nossa Turma</a>
+        </div>
       </div>
       <div class="container footer-bottom">
         <span>© <span id="current-year"></span> CEUNSP</span>
