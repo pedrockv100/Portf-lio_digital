@@ -1,4 +1,5 @@
 :root {
+  color-scheme: only light;
   --navy-950: #031f39;
   --ceunsp-blue: #003b71;
   --navy-900: #05335d;
@@ -27,6 +28,7 @@
 }
 
 html {
+  color-scheme: only light;
   scroll-behavior: smooth;
   scroll-padding-top: 24px;
 }
